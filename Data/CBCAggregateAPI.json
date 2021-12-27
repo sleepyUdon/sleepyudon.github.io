@@ -1,0 +1,454 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "CBC Aggregate API.\n",
+    "version": "1.0.0",
+    "title": "CBC Aggregate API",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "www.cbc.ca",
+  "basePath": "/aggregate_api/v1",
+  "tags": [
+    {
+      "name": "Top Stories",
+      "description": "Top Stories Lineup"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/items": {
+      "get": {
+        "tags": [
+          "Top Stories"
+        ],
+        "summary": "Get lineup for CBC News Top Stories lineup",
+        "operationId": "getTopStoriesLineup",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "orderLineupId",
+            "in": "query",
+            "description": "OrderLineupId",
+            "required": true,
+            "type": "string",
+            "default": "2.630"
+          },
+          {
+            "name": "categorySet",
+            "in": "query",
+            "description": "CategorySet",
+            "required": true,
+            "type": "string",
+            "default": "cbc-news-apps"
+          },
+          {
+            "name": "typeSet",
+            "in": "query",
+            "description": "TypeSet",
+            "required": true,
+            "type": "string",
+            "default": "cbc-news-apps-feed"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page",
+            "required": true,
+            "type": "integer",
+            "default": 1
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "PageSize",
+            "required": true,
+            "type": "integer",
+            "default": 20
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/LineupItemDto"
+            }
+          },
+          "400": {
+            "description": "Invalid call"
+          },
+          "404": {
+            "description": "Lineup not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "LineupItemDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Id"
+        },
+        "title": {
+          "type": "string",
+          "description": "Story Title"
+        },
+        "source": {
+          "$ref": "#/definitions/SourceType"
+        },
+        "sourceId": {
+          "type": "string",
+          "description": "Source Id"
+        },
+        "version": {
+          "type": "string",
+          "description": "Version"
+        },
+        "publishedAt": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Published Time"
+        },
+        "readablePublishedAt": {
+          "type": "string",
+          "description": "Readable Published Time"
+        },
+        "updatedAt": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Updated Time"
+        },
+        "readableUpdatedAt": {
+          "type": "string",
+          "description": "Readable Updated Time"
+        },
+        "type": {
+          "$ref": "#/definitions/LineupItemType"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "embedTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LineupItemType"
+          }
+        },
+        "typeAttributes": {
+          "$ref": "#/definitions/TypeAttributesDto"
+        }
+      }
+    },
+    "TypeAttributesDto": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "urlSlug": {
+          "type": "string"
+        },
+        "deck": {
+          "type": "string"
+        },
+        "imageSmall": {
+          "type": "string"
+        },
+        "imageLarge": {
+          "type": "string"
+        },
+        "imageAspects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ImageAspectsType"
+          }
+        },
+        "flag": {
+          "type": "string"
+        },
+        "flags": {
+          "$ref": "#/definitions/FlagDto"
+        },
+        "displayComments": {
+          "type": "boolean"
+        },
+        "commentsSectionId": {
+          "type": "string"
+        },
+        "trending": {
+          "$ref": "#/definitions/TrendingDto"
+        },
+        "mediaDuration": {
+          "type": "integer"
+        },
+        "mediaId": {
+          "type": "string"
+        },
+        "mediaStreamType": {
+          "type": "string"
+        },
+        "mediaCaptionUrl": {
+          "type": "string"
+        },
+        "show": {
+          "type": "string"
+        },
+        "showslug": {
+          "type": "string"
+        },
+        "body": {
+          "$ref": "#/definitions/BodyDto"
+        },
+        "sectionList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sectionLabels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "categories": {
+          "$ref": "#/definitions/CategoryDto"
+        },
+        "contextualHeadlines": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "headline": {
+          "$ref": "#/definitions/HeadlineDto"
+        },
+        "author": {
+          "$ref": "#/definitions/AuthorDto"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "language": {
+          "type": "string"
+        }
+      }
+    },
+    "AuthorDto": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "containsVideo": {
+          "type": "string"
+        },
+        "containsPhotogallery": {
+          "type": "string"
+        }
+      }
+    },
+    "BodyDto": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean"
+        },
+        "containsVideo": {
+          "type": "boolean"
+        },
+        "containsPhotogallery": {
+          "type": "boolean"
+        }
+      }
+    },
+    "CategoryDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "priorityWhenInlined": {
+          "type": "integer"
+        },
+        "metadata": {
+          "$ref": "#/definitions/MetadataDto"
+        },
+        "image": {
+          "type": "string"
+        },
+        "bannerImage": {
+          "type": "string"
+        }
+      }
+    },
+    "FlagDto": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        }
+      }
+    },
+    "HeadlineDto": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "mediaId": {
+          "type": "string"
+        }
+      }
+    },
+    "MetadataDto": {
+      "type": "object",
+      "properties": {
+        "tracking": {
+          "$ref": "#/definitions/MetadataTrackingDto"
+        },
+        "attribution": {
+          "$ref": "#/definitions/MetadataAttributionDto"
+        },
+        "adHierarchy": {
+          "type": "string"
+        },
+        "polopolyDeptName": {
+          "type": "string"
+        },
+        "polopolyExternalId": {
+          "type": "string"
+        },
+        "orderLineupId": {
+          "type": "string"
+        },
+        "orderLineupSlug": {
+          "type": "string"
+        },
+        "mpxCategoryName": {
+          "type": "string"
+        },
+        "ottTitle": {
+          "type": "string"
+        },
+        "pageTitle": {
+          "type": "string"
+        },
+        "pageDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "MetadataTrackingDto": {
+      "type": "object",
+      "properties": {
+        "subsection1": {
+          "type": "string"
+        },
+        "subsection2": {
+          "type": "string"
+        },
+        "subsection3": {
+          "type": "string"
+        },
+        "subsection4": {
+          "type": "string"
+        },
+        "contentarea": {
+          "type": "string"
+        },
+        "contenttype": {
+          "type": "string"
+        }
+      }
+    },
+    "MetadataAttributionDto": {
+      "type": "object",
+      "properties": {
+        "level1": {
+          "type": "string"
+        },
+        "level2": {
+          "type": "string"
+        },
+        "level3": {
+          "type": "string"
+        }
+      }
+    },
+    "TrendingDto": {
+      "type": "object",
+      "properties": {
+        "numViewers": {
+          "type": "integer"
+        },
+        "numViewersSRS": {
+          "type": "string"
+        }
+      }
+    },
+    "ImageAspectsType": {
+      "type": "string",
+      "enum": [
+        "16x9_940",
+        "16x9_300",
+        "16x9_620",
+        "original_620",
+        "original_300",
+        "16x9tight_140",
+        "16x9_460"
+      ]
+    },
+    "LineupItemType": {
+      "type": "string",
+      "enum": [
+        "story"
+      ]
+    },
+    "SourceType": {
+      "type": "string",
+      "enum": [
+        "Polopoly"
+      ]
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
