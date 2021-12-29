@@ -11,7 +11,7 @@
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "1.0.0-oas3"
+    "version": "1.0.1-oas3"
   },
   "externalDocs": {
     "description": "Find out more about Swagger",
@@ -123,7 +123,7 @@
     "schemas": {
       "LineupItemDto": {
         "required": [
-            "id"
+          "id"
         ],
         "type": "object",
         "properties": {
@@ -179,6 +179,20 @@
           },
           "typeAttributes": {
             "$ref": "#/components/schemas/TypeAttributesDto"
+          },
+          "images": {
+            "$ref": "#/components/schemas/ImagesDto"
+          },
+          "language": {
+            "type": "string"
+          }
+        }
+      },
+      "ImagesDto": {
+        "type": "object",
+        "properties": {
+          "square_140": {
+            "type": "string"
           }
         }
       },
@@ -260,7 +274,13 @@
           "contextualHeadlines": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/ContextualHeadlineDto"
+            }
+          },
+          "relatedLinks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RelatedLinkDto"
             }
           },
           "headline": {
@@ -339,6 +359,20 @@
             "type": "string"
           },
           "bannerImage": {
+            "type": "string"
+          }
+        }
+      },
+      "ContextualHeadlineDto": {
+        "type": "object",
+        "properties": {
+          "contextId": {
+            "type": "string"
+          },
+          "contextualLineupSlug": {
+            "type": "string"
+          },
+          "headline": {
             "type": "string"
           }
         }
@@ -440,6 +474,23 @@
           }
         }
       },
+      "RelatedLinkDto": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "sourceId": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
       "TrendingDto": {
         "type": "object",
         "properties": {
@@ -466,7 +517,9 @@
       "LineupItemType": {
         "type": "string",
         "enum": [
-          "story"
+          "audio",
+          "story",
+          "video"
         ]
       },
       "SourceType": {
