@@ -122,6 +122,9 @@
   "components": {
     "schemas": {
       "LineupItemDto": {
+        "required": [
+            "id"
+        ],
         "type": "object",
         "properties": {
           "id": {
