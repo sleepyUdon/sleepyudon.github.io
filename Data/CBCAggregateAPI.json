@@ -40,7 +40,6 @@
           {
             "name": "lineupSlug",
             "in": "query",
-            "description": "lineupSlug",
             "required": true,
             "style": "form",
             "explode": true,
