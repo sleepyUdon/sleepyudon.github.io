@@ -11,7 +11,7 @@
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "1.0.1-oas3"
+    "version": "1.0.2-oas3"
   },
   "externalDocs": {
     "description": "Find out more about Swagger",
@@ -38,15 +38,15 @@
         "operationId": "getTopStoriesLineup",
         "parameters": [
           {
-            "name": "orderLineupId",
+            "name": "lineupSlug",
             "in": "query",
-            "description": "OrderLineupId",
+            "description": "lineupSlug",
             "required": true,
             "style": "form",
             "explode": true,
             "schema": {
               "type": "string",
-              "default": "2.630"
+              "default": "news"
             }
           },
           {
@@ -62,15 +62,27 @@
             }
           },
           {
-            "name": "typeSet",
+            "name": "excludeCategorySet",
             "in": "query",
-            "description": "TypeSet",
+            "description": "excludeCategorySet",
             "required": true,
             "style": "form",
             "explode": true,
             "schema": {
               "type": "string",
-              "default": "cbc-news-apps-feed"
+              "default": "cbc-news-apps-exclude"
+            }
+          },
+          {
+            "name": "typeSet",
+            "in": "query",
+            "description": "typeSet",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "default": "cbc-news-apps-feed-v2"
             }
           },
           {
@@ -136,63 +148,41 @@
             "type": "string",
             "description": "Story Title"
           },
+          "description": {
+            "type": "string",
+            "description": "Story Description"
+          },
           "source": {
-            "$ref": "#/components/schemas/SourceType"
+            "type": "string"
           },
           "sourceId": {
             "type": "string",
             "description": "Source Id"
           },
-          "version": {
-            "type": "string",
-            "description": "Version"
-          },
           "publishedAt": {
-            "type": "integer",
-            "description": "Published Time",
-            "format": "int64"
+            "type": "number",
+            "description": "Published Time"
           },
           "readablePublishedAt": {
             "type": "string",
             "description": "Readable Published Time"
           },
           "updatedAt": {
-            "type": "integer",
-            "description": "Updated Time",
-            "format": "int64"
+            "type": "number",
+            "description": "Updated Time"
           },
           "readableUpdatedAt": {
             "type": "string",
             "description": "Readable Updated Time"
           },
           "type": {
-            "$ref": "#/components/schemas/LineupItemType"
-          },
-          "active": {
-            "type": "boolean"
+            "type": "string"
           },
           "embedTypes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/LineupItemType"
-            }
+            "type": "string"
           },
           "typeAttributes": {
             "$ref": "#/components/schemas/TypeAttributesDto"
-          },
-          "images": {
-            "$ref": "#/components/schemas/ImagesDto"
-          },
-          "language": {
-            "type": "string"
-          }
-        }
-      },
-      "ImagesDto": {
-        "type": "object",
-        "properties": {
-          "square_140": {
-            "type": "string"
           }
         }
       },
