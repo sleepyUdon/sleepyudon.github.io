@@ -189,34 +189,6 @@
           }
         }
       },
-      "AuthorDto": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "containsVideo": {
-            "type": "string"
-          },
-          "containsPhotogallery": {
-            "type": "string"
-          }
-        }
-      },
-      "BodyDto": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "boolean"
-          },
-          "containsVideo": {
-            "type": "boolean"
-          },
-          "containsPhotogallery": {
-            "type": "boolean"
-          }
-        }
-      },
       "CategoryDto": {
         "type": "object",
         "properties": {
@@ -266,14 +238,11 @@
           }
         }
       },
-      "FlagDto": {
+      "DerivativesDto": {
         "type": "object",
         "properties": {
-          "status": {
-            "type": "string"
-          },
-          "label": {
-            "type": "string"
+          "size_16x9_620": {
+            "$ref": "#/components/schemas/DerivativesDto_size_16x9_620"
           }
         }
       },
@@ -288,55 +257,19 @@
       "MainContentTypeAttributesDto": {
         "type": "object",
         "properties": {
-          "urlSlug": {
-            "type": "string"
-          },
-          "trending": {
-            "$ref": "#/components/schemas/TrendingDto"
-          },
           "contextualHeadlines": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ContextualHeadlineDto"
             }
           },
-          "commentsSectionId": {
-            "type": "string"
-          },
           "flag": {
-            "type": "string"
-          },
-          "sectionLabels": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "showSlug": {
-            "type": "string"
-          },
-          "author": {
-            "$ref": "#/components/schemas/AuthorDto"
-          },
-          "flags": {
-            "$ref": "#/components/schemas/FlagDto"
-          },
-          "show": {
             "type": "string"
           },
           "imageLarge": {
             "type": "string"
           },
-          "body": {
-            "$ref": "#/components/schemas/BodyDto"
-          },
-          "displayComments": {
-            "type": "boolean"
-          },
           "url": {
-            "type": "string"
-          },
-          "imageSmall": {
             "type": "string"
           },
           "mediaDuration": {
@@ -349,15 +282,6 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CategoryDto"
-            }
-          },
-          "imageAspects": {
-            "type": "string"
-          },
-          "sectionList": {
-            "type": "array",
-            "items": {
-              "type": "string"
             }
           }
         }
@@ -446,7 +370,7 @@
           "title": {
             "type": "string"
           },
-          "sourceid": {
+          "sourceId": {
             "type": "string"
           },
           "source": {
@@ -477,24 +401,42 @@
           }
         }
       },
-      "TrendingDto": {
-        "type": "object",
-        "properties": {
-          "numViewers": {
-            "type": "integer"
-          },
-          "numViewersSRS": {
-            "type": "string"
-          }
-        }
-      },
       "TypeAttributesDto_components_mainContent": {
         "type": "object",
         "properties": {
           "source": {
             "type": "string"
           },
-          "sourceid": {
+          "sourceId": {
+            "type": "string"
+          },
+          "typeAttributes": {
+            "$ref": "#/components/schemas/MainContentTypeAttributesDto"
+          },
+          "type": {
+            "type": "string"
+          },
+          "embedTypes": {
+            "type": "string"
+          }
+        }
+      },
+      "TypeAttributesDto_components_mainVisual": {
+        "type": "object",
+        "properties": {
+          "derivatives": {
+            "$ref": "#/components/schemas/DerivativesDto"
+          },
+          "itemType": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "sourceId": {
             "type": "string"
           },
           "typeAttributes": {
@@ -515,13 +457,27 @@
             "$ref": "#/components/schemas/TypeAttributesDto_components_mainContent"
           },
           "mainVisual": {
-            "$ref": "#/components/schemas/LineupItemDto"
+            "$ref": "#/components/schemas/TypeAttributesDto_components_mainVisual"
           },
           "primary": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PrimaryDto"
             }
+          }
+        }
+      },
+      "DerivativesDto_size_16x9_620": {
+        "type": "object",
+        "properties": {
+          "w": {
+            "type": "integer"
+          },
+          "h": {
+            "type": "integer"
+          },
+          "fileurl": {
+            "type": "string"
           }
         }
       }
