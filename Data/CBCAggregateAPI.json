@@ -11,7 +11,7 @@
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "1.0.2-oas3"
+    "version": "1.0.4-oas3"
   },
   "externalDocs": {
     "description": "Find out more about Swagger",
@@ -40,6 +40,7 @@
           {
             "name": "lineupSlug",
             "in": "query",
+            "description": "lineupSlug",
             "required": true,
             "style": "form",
             "explode": true,
@@ -140,39 +141,31 @@
         "properties": {
           "id": {
             "type": "integer",
-            "description": "Id",
             "format": "int64"
           },
           "title": {
-            "type": "string",
-            "description": "Story Title"
+            "type": "string"
           },
           "description": {
-            "type": "string",
-            "description": "Story Description"
+            "type": "string"
           },
           "source": {
             "type": "string"
           },
           "sourceId": {
-            "type": "string",
-            "description": "Source Id"
+            "type": "string"
           },
           "publishedAt": {
-            "type": "number",
-            "description": "Published Time"
+            "type": "number"
           },
           "readablePublishedAt": {
-            "type": "string",
-            "description": "Readable Published Time"
+            "type": "string"
           },
           "updatedAt": {
-            "type": "number",
-            "description": "Updated Time"
+            "type": "number"
           },
           "readableUpdatedAt": {
-            "type": "string",
-            "description": "Readable Updated Time"
+            "type": "string"
           },
           "type": {
             "type": "string"
@@ -182,110 +175,17 @@
           },
           "typeAttributes": {
             "$ref": "#/components/schemas/TypeAttributesDto"
+          },
+          "images": {
+            "$ref": "#/components/schemas/ImagesDto"
           }
         }
       },
       "TypeAttributesDto": {
         "type": "object",
         "properties": {
-          "url": {
-            "type": "string"
-          },
-          "urlSlug": {
-            "type": "string"
-          },
-          "deck": {
-            "type": "string"
-          },
-          "imageSmall": {
-            "type": "string"
-          },
-          "imageLarge": {
-            "type": "string"
-          },
-          "imageAspects": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ImageAspectsType"
-            }
-          },
-          "flag": {
-            "type": "string"
-          },
-          "flags": {
-            "$ref": "#/components/schemas/FlagDto"
-          },
-          "displayComments": {
-            "type": "boolean"
-          },
-          "commentsSectionId": {
-            "type": "string"
-          },
-          "trending": {
-            "$ref": "#/components/schemas/TrendingDto"
-          },
-          "mediaDuration": {
-            "type": "integer"
-          },
-          "mediaId": {
-            "type": "string"
-          },
-          "mediaStreamType": {
-            "type": "string"
-          },
-          "mediaCaptionUrl": {
-            "type": "string"
-          },
-          "show": {
-            "type": "string"
-          },
-          "showslug": {
-            "type": "string"
-          },
-          "body": {
-            "$ref": "#/components/schemas/BodyDto"
-          },
-          "sectionList": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "sectionLabels": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "categories": {
-            "$ref": "#/components/schemas/CategoryDto"
-          },
-          "contextualHeadlines": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ContextualHeadlineDto"
-            }
-          },
-          "relatedLinks": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RelatedLinkDto"
-            }
-          },
-          "headline": {
-            "$ref": "#/components/schemas/HeadlineDto"
-          },
-          "author": {
-            "$ref": "#/components/schemas/AuthorDto"
-          },
-          "images": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "language": {
-            "type": "string"
+          "components": {
+            "$ref": "#/components/schemas/TypeAttributesDto_components"
           }
         }
       },
@@ -377,14 +277,88 @@
           }
         }
       },
-      "HeadlineDto": {
+      "ImagesDto": {
         "type": "object",
         "properties": {
-          "type": {
+          "square_140": {
+            "type": "string"
+          }
+        }
+      },
+      "MainContentTypeAttributesDto": {
+        "type": "object",
+        "properties": {
+          "urlSlug": {
             "type": "string"
           },
-          "mediaId": {
+          "trending": {
+            "$ref": "#/components/schemas/TrendingDto"
+          },
+          "contextualHeadlines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContextualHeadlineDto"
+            }
+          },
+          "commentsSectionId": {
             "type": "string"
+          },
+          "flag": {
+            "type": "string"
+          },
+          "sectionLabels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "showSlug": {
+            "type": "string"
+          },
+          "author": {
+            "$ref": "#/components/schemas/AuthorDto"
+          },
+          "flags": {
+            "$ref": "#/components/schemas/FlagDto"
+          },
+          "show": {
+            "type": "string"
+          },
+          "imageLarge": {
+            "type": "string"
+          },
+          "body": {
+            "$ref": "#/components/schemas/BodyDto"
+          },
+          "displayComments": {
+            "type": "boolean"
+          },
+          "url": {
+            "type": "string"
+          },
+          "imageSmall": {
+            "type": "string"
+          },
+          "mediaDuration": {
+            "type": "integer"
+          },
+          "mediaStreamType": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CategoryDto"
+            }
+          },
+          "imageAspects": {
+            "type": "string"
+          },
+          "sectionList": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -463,20 +437,43 @@
           }
         }
       },
-      "RelatedLinkDto": {
+      "PrimaryContentDto": {
         "type": "object",
         "properties": {
-          "url": {
+          "flag": {
             "type": "string"
           },
           "title": {
             "type": "string"
           },
-          "sourceId": {
+          "sourceid": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "embedTypes": {
             "type": "string"
           },
           "type": {
             "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      },
+      "PrimaryDto": {
+        "type": "object",
+        "properties": {
+          "localheadline": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "content": {
+            "$ref": "#/components/schemas/PrimaryContentDto"
           }
         }
       },
@@ -491,31 +488,42 @@
           }
         }
       },
-      "ImageAspectsType": {
-        "type": "string",
-        "enum": [
-          "16x9_940",
-          "16x9_300",
-          "16x9_620",
-          "original_620",
-          "original_300",
-          "16x9tight_140",
-          "16x9_460"
-        ]
+      "TypeAttributesDto_components_mainContent": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "sourceid": {
+            "type": "string"
+          },
+          "typeAttributes": {
+            "$ref": "#/components/schemas/MainContentTypeAttributesDto"
+          },
+          "type": {
+            "type": "string"
+          },
+          "embedTypes": {
+            "type": "string"
+          }
+        }
       },
-      "LineupItemType": {
-        "type": "string",
-        "enum": [
-          "audio",
-          "story",
-          "video"
-        ]
-      },
-      "SourceType": {
-        "type": "string",
-        "enum": [
-          "Polopoly"
-        ]
+      "TypeAttributesDto_components": {
+        "type": "object",
+        "properties": {
+          "mainContent": {
+            "$ref": "#/components/schemas/TypeAttributesDto_components_mainContent"
+          },
+          "mainVisual": {
+            "$ref": "#/components/schemas/LineupItemDto"
+          },
+          "primary": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrimaryDto"
+            }
+          }
+        }
       }
     }
   }
