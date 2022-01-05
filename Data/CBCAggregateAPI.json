@@ -192,35 +192,8 @@
       "CategoryDto": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "name": {
-            "type": "string"
-          },
-          "path": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "slug": {
-            "type": "string"
-          },
-          "priority": {
-            "type": "integer"
-          },
-          "priorityWhenInlined": {
-            "type": "integer"
-          },
           "metadata": {
             "$ref": "#/components/schemas/MetadataDto"
-          },
-          "image": {
-            "type": "string"
-          },
-          "bannerImage": {
-            "type": "string"
           }
         }
       },
@@ -292,34 +265,7 @@
           "tracking": {
             "$ref": "#/components/schemas/MetadataTrackingDto"
           },
-          "attribution": {
-            "$ref": "#/components/schemas/MetadataAttributionDto"
-          },
-          "adHierarchy": {
-            "type": "string"
-          },
-          "polopolyDeptName": {
-            "type": "string"
-          },
-          "polopolyExternalId": {
-            "type": "string"
-          },
-          "orderLineupId": {
-            "type": "string"
-          },
           "orderLineupSlug": {
-            "type": "string"
-          },
-          "mpxCategoryName": {
-            "type": "string"
-          },
-          "ottTitle": {
-            "type": "string"
-          },
-          "pageTitle": {
-            "type": "string"
-          },
-          "pageDescription": {
             "type": "string"
           }
         }
@@ -343,20 +289,6 @@
             "type": "string"
           },
           "contenttype": {
-            "type": "string"
-          }
-        }
-      },
-      "MetadataAttributionDto": {
-        "type": "object",
-        "properties": {
-          "level1": {
-            "type": "string"
-          },
-          "level2": {
-            "type": "string"
-          },
-          "level3": {
             "type": "string"
           }
         }
